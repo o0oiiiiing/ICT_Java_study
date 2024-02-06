@@ -1,0 +1,34 @@
+1. MyBatis 다운 받아서 util 폴더에 넣고 압축해제
+2. mybatis-3.X.XX.jar, mybatis-3.X.XX.pdf 파일이 필요하다.
+2-1. 프로젝트에서 마우스 오른쪽 Build path -> configure build path 선택
+2-2. 프로젝트 선택 후 widow -> preference -> Maven -> Download artifact javadoc
+3. MyBatis는 자바진영에서 사용하는 SQL 프레임 워크(=구조화된 툴)
+4. 만들기
+4-1. VO를 먼저 만들자.
+	 원하는 테이블과 컬럼명이 일치,
+	 일부를 빼도 상관없고 다른 테이블의 컬럼명을 넣어도 상관없다.
+4-2. Config.xml를 만들자
+	 (참고 : xml이란 확장 마크업 언어, 사용자가 태그를 만들어서 사용할 수 있다.)
+	 다운받은 pdf를 보면 만드는 법이 나온다. (pdf page.3)
+	 xml 파일의 첫 줄을 무조건 <?xml version="1.0" encoding="UTF-8"?>
+	 encoding이란 문자를 바이트코드로 변환하는 것
+	 UTF-8 : 전세계 언어를 표현가능, 유니코드
+	 → 오라클에 접속 정보 입력
+	 → mapper.xml 위치 지정
+4-3. mapper.xml를 만들자
+	 다운받은 pdf를 보면 만드는 법이 나온다. (pdf page.4)
+	 mapper namespace = "customer" 는 mapper가 여러개 일 때 구분하기 위함
+	 자바에서 mapper에 접근할 때 namespace가 지정한 메퍼이름.id로 접근한다.
+	 mapper는 쿼리를 사용하여 DB에 보내고 결과를 받아서 mapper를 호출한 곳으로
+	 결과를 되돌려 보내는 역할을 한다.
+	 태그 자체에 select, insert, update 태그가 있다.
+5. DBService.java 만들기
+   → config 파일 읽어서 자바에서 MyBatis를 사용할 수 있도록 도와주는 클래스 
+     다운받은 pdf를 보면 만드는 법이 나온다. (pdf page.2)
+     자바에서는 SqlSession 클래스를 사용한다.
+     SqlSession클래스를 사용하기 위해서 SqlSessionFactory가 필요하다.
+     SqlSessionFactory를 리턴해주는 클래스
+6. DAO.java 만들기
+   DB처리하는 클래스 : DBService.getFactory()로 SqlSessionFactory를 호출하고
+                  SqlSessionFactory를 이용해서 자바에서 사용할 수 있는 SqlSession
+	 

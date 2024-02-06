@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="members">
+	<!-- 전체 보기 -->
+	<select id="selectAll" resultType="com.ict.mybatis2.VO">
+		select * from members
+	</select>
+	
+	<!-- 특정 데이터 보기 -->
+	<select id="selectOne" resultType="com.ict.mybatis2.VO" parameterType="String">
+		select * from members where idx = #{idx}
+	</select>
+	
+	<!-- 데이터 삭제 -->
+	<delete id="delete" parameterType="com.ict.mybatis2.VO">
+		delete from members where idx = #{idx}
+	</delete>
+	
+	<!-- 데이터 삽입 -->
+	<insert id="insert" parameterType="com.ict.mybatis2.VO">
+		insert into members (idx, id, pw, username, age, regdate) 
+		values (#{idx}, #{id}, #{pw}, #{username}, #{age}, sysdate)
+	</insert>
+	
+	<!-- 데이터 수정 -->
+	<update id="update" parameterType="com.ict.mybatis2.VO">
+		update members
+		set username = #{username}, age = #{age}
+		where idx = #{idx}
+	</update>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.ict.mybatis2.VO" parameterType="com.ict.mybatis2.VO">
+		select * from members where id = #{id}
+	</select>
+</mapper>
